@@ -1,4 +1,4 @@
-package ua.com.ligaspinig.spiningbot.processor;
+package ua.com.ligaspinig.spiningbot.processors;
 
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;

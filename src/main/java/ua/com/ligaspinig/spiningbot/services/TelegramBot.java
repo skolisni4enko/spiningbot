@@ -1,12 +1,11 @@
-package ua.com.ligaspinig.spiningbot.service;
+package ua.com.ligaspinig.spiningbot.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ua.com.ligaspinig.spiningbot.config.BotConfig;
-import ua.com.ligaspinig.spiningbot.processor.Processor;
+import ua.com.ligaspinig.spiningbot.processors.Processor;
 
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
@@ -14,7 +13,12 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final BotConfig config;
     private Processor processor;
 
-    public TelegramBot (BotConfig config) {
+    @Autowired
+    public void setProcessor(Processor processor) {
+        this.processor = processor;
+    }
+
+    public TelegramBot(BotConfig config) {
         this.config = config;
     }
 
