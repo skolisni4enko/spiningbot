@@ -15,13 +15,23 @@ public class BotInitializer {
     @Autowired
     TelegramBot bot;
 
+    private TelegramBotsApi telegramBotsApi;
+
     @EventListener(ContextRefreshedEvent.class)
     public void init() {
         try {
-            final TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+            startBotSession(telegramBotsApi);
             telegramBotsApi.registerBot(bot);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
+    }
+
+    private TelegramBotsApi startBotSession(TelegramBotsApi telegramBotsApi) throws TelegramApiException {
+        if (telegramBotsApi != null)
+            return telegramBotsApi;
+        else
+            return new TelegramBotsApi(DefaultBotSession.class);
+
     }
 }
