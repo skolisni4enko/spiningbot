@@ -20,7 +20,7 @@ public class BotInitializer {
     @EventListener(ContextRefreshedEvent.class)
     public void init() {
         try {
-            startBotSession(telegramBotsApi);
+            telegramBotsApi = startBotSession(telegramBotsApi);
             telegramBotsApi.registerBot(bot);
         } catch (TelegramApiException e) {
             e.printStackTrace();
