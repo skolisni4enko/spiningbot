@@ -16,12 +16,19 @@ public class BotInitializer {
     TelegramBot bot;
 
     @EventListener(ContextRefreshedEvent.class)
-    public void init(){
+    public void init() {
         try {
-            TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+            final TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(bot);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
+    }
+
+    private TelegramBotsApi startBotSession(TelegramBotsApi telegramBotsApi) throws TelegramApiException {
+        if (telegramBotsApi != null) {
+            return telegramBotsApi;
+        } else
+            return new TelegramBotsApi(DefaultBotSession.class);
     }
 }
