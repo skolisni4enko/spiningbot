@@ -24,11 +24,4 @@ public class BotInitializer {
             e.printStackTrace();
         }
     }
-
-    private TelegramBotsApi startBotSession(TelegramBotsApi telegramBotsApi) throws TelegramApiException {
-        if (telegramBotsApi != null) {
-            return telegramBotsApi;
-        } else
-            return new TelegramBotsApi(DefaultBotSession.class);
-    }
 }
