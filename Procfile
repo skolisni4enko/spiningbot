@@ -1,1 +1,1 @@
-worker: java -jar target/spiningbot-0.0.1.jar
+worker java -jar target/spiningbot-0.0.1.jar
